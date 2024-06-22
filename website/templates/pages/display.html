@@ -1,0 +1,71 @@
+{% extends "../base/base.html" %}
+{%load static%}
+
+{% block title %}
+    <title>Charity display</title>
+{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{%static 'css/display.css'%}">
+{% endblock %}
+
+{% block body %}
+<div class="container my-4 mt-5">
+    <div class="row featurette">
+        <div class="col-md-7 order-md-2 mt-5">
+            <h2 class="featurette-heading">{{ charity.name }}</h2>
+            <p class="lead">{{ charity.description }}</p>
+            <a href="{{ charity.website }}" target="_blank" class="btn btn-lg btn-info">Visit Website</a>
+            
+        </div>
+        <div class="col-md-5 order-md-1 mt-5">
+            <img src="{{ charity.image.url }}" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" alt="{{ charity.name }}" width="500" height="500">
+        </div>
+    </div>
+    <hr class="featurette-divider">
+    <div class="row">
+        <p class="col-md-6"><strong>Location:</strong> {{ charity.location }}</p>
+        <p class="col-md-6"><strong>Established Year:</strong> {{ charity.establishedYear }}</p>
+    </div>
+    <div class="container mt-3">
+        <h3 class="display-5 text-center mb-2">Projects</h3>
+        <form method="get" action="{% url 'charity-detail' id=charity.id %}" class="mb-3">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search for projects by name" name="q" value="{{ request.GET.q }}">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="submit">Search</button>
+                    <a href="{% url 'charity-detail' id=charity.id %}" class="btn btn-outline-danger">Cancel Search</a>
+                </div>
+            </div>
+        </form>
+        <hr>
+    
+        <div class="row">
+            {% for project in projects %}
+            <article class="project-article d-flex mb-5">
+                <img src="{{ project.image.url }}" alt="{{ project.name }}" class="project-image">
+                <div class="project-content text-justify mt-5">
+                    <h2>{{ project.name }}</h2>
+                    <p>{{ project.description }}</p>
+                    <p class="charity-organization"><strong>Organized by</strong> {{ project.charity_ID.name }}</p>
+                    {% if user.is_authenticated %}
+                        <a href="{% url 'make_donation' user.id project.id project.charity_ID.id %}" class="btn btn-donate">
+                            <i class="fa-regular fa-dollar"></i> Make Donation
+                        </a>
+                    {% else %}
+                        <a href="{% url 'login' %}" class="btn btn-warning">
+                            <i class="fa-regular fa-sign-in"></i> Login to Make a Donation
+                        </a>
+                    {% endif %}
+    
+                    
+                </div>
+            </article>
+            {% empty %}
+                <p class="text-center">No projects found.</p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

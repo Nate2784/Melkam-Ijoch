@@ -1,0 +1,116 @@
+.intro {
+    position: relative;
+    max-height: 80vh;
+    overflow: hidden;
+}
+
+.intro::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(2, 65, 54, 0.207);
+}
+
+.slogan {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+    color: whitesmoke;
+    z-index: 1;
+}
+
+.shadow {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.container-fluid {
+    padding: 0; /* Remove default padding */
+}
+
+.row {
+    margin: 0; /* Remove default margin */
+}
+
+.col-md-4 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: auto; /* Remove default margin */
+}
+
+.shadow {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: transform 0.3s ease-in-out; /* Smooth transition for hover effect */
+}
+
+/* Hover effect for columns */
+.col-md-4:hover {
+    transform: translateY(-10px);
+}
+
+/* Modern font style */
+.row h2 {
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+    color: #333;
+}
+
+.row p {
+    font-family: 'Arial', sans-serif;
+    color: #666;
+}
+
+/* Icon styling */
+.row .fas {
+    color: #5e817b; /* Bootstrap primary color */
+    background-color: #f8f9fa; /* Bootstrap light background color */
+    border-radius: 50%;
+    padding: 20px;
+}
+
+.card {
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-title {
+    color: #5e817b; /* Bootstrap primary color */
+    font-weight: 400;
+    font-style: bold;
+}
+
+.card-subtitle {
+    font-weight: bold;
+}
+
+.card-text {
+    line-height: 1.5;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #216d62;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    transition: background-color 0.5s;
+}
+
+.contact{
+    background-color: #1c63585b;
+    padding: 20px;
+    border-radius: 10px;
+    border-left: #216d62 3px solid;
+}

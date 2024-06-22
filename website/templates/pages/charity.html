@@ -1,0 +1,48 @@
+{% extends "../base/base.html" %}
+{% load static %}
+
+{% block title %}
+<title>Charities</title>
+{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/charity.css' %}">
+{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    
+    <h2 class="display-5 mx-3 mb-5">Charity Organizations</h2>
+    <form method="get" action="{% url 'charity' %}" class="mb-3">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search for charities by charity name, cause or location" name="q" value="{{ request.GET.q }}">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="submit">Search</button>
+                <a href="{% url 'charity' %}" class="btn btn-outline-danger">Cancel Search</a>
+            </div>
+        </div>
+    </form>
+    <hr>
+    <div class="row">
+        {% for charity in charityOrganizations %}
+        <div class="col-md-4 mb-3 charity-card">
+            <div class="card h-100">
+                <img src="{{ charity.image.url }}" class="card-img-top" alt="{{ charity.name }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ charity.name }}</h5>
+                    <p>{{ charity.description|truncatewords:15 }}</p>
+                    <a href="{% url 'charity-detail' id=charity.id %}" class="btn btn-primary">View Details</a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p class="text-center">No charities found.</p>
+        {% endfor %}
+    </div>
+    
+    <div class="text-center mt-4">
+        <button id="load-more-btn" class="btn btn-primary">Load More</button>
+    </div>
+
+<script src="../../static/scripts/charity_load.js"></script>
+{% endblock %}

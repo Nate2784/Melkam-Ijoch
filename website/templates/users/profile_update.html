@@ -1,0 +1,29 @@
+{% extends "../base/base.html" %}
+
+{%load static%}
+{% block title %}
+<title>User Profileupdate</title>
+{% endblock %} 
+
+{% block styles %}
+<link rel="stylesheet" href="{%static 'css/signup.css'%}">
+{% endblock %}
+
+{% block body %}
+<div class="container d-flex justify-content-center mt-5">
+    <div>
+<h2>Update Profile</h2>
+<form method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit" class="btn btn-success">Update</button>
+<div class="d-flex justify-content-between ">
+  <a href="{% url 'change_password' %}" class="btn btn-info">Change Password</a> 
+  <a href="{% url 'profile_delete_confirm' %}" class="btn btn-danger">Delete Profile</a>
+</div>
+  <a href="{% url 'profile' %}" class="btn btn-secondary">Cancel</a>
+</form>
+
+</div>
+</div>
+{% endblock %}

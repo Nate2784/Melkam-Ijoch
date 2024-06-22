@@ -1,0 +1,50 @@
+h1{
+    color:#DCF2F1;
+}
+
+body {
+    background: #e0e4e4 ;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.navbar{
+    background-color: #5e817b;
+    box-shadow: 6px 6px 16px 2px rgb(49, 61, 61);
+    width: 100%;
+}
+.navbar-brand,.navbar-nav a,.nav-item a{
+    color: white;
+
+}
+.navbar-brand:hover{
+    color: cadetblue;
+}
+.nav-item a{
+    margin: 0 10px;
+}
+.container-fluid a{
+    color: white;
+}
+.nav-item .active{
+    color: rgb(23, 68, 70);
+}
+.nav-item a:hover{
+    text-decoration: none;
+    color: rgb(23, 68, 70);
+}
+.dropdown-menu {
+    background-color: #5e817b;
+}
+
+.dropdown-item {
+    color: #fff;
+}
+
+.dropdown-item:hover {
+    background-color: transparent;
+    color: rgb(23, 68, 70);
+}
+.navbar-toggler{
+    color: white;
+    border: var(--bs-border-width) solid white;
+}
+

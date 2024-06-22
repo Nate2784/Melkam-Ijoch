@@ -1,0 +1,65 @@
+h2{
+    color: #216d62;
+    font-weight: 600;
+    font-style: bold;
+}
+.featurette {
+    perspective: 1500px;
+}
+
+.featurette-heading {
+    transform: translateZ(120px);
+    transition: transform 0.3s;
+}
+
+.featurette-image {
+    transform: rotateY(10deg) translateZ(100px);
+    transition: transform 0.3s;
+}
+
+.container:hover .featurette-heading,
+.container:hover .featurette-image {
+    transform: translateZ(0);
+}
+
+.projects-section {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.project-article {
+    background: #f8f9fa;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.project-article:hover {
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.project-image {
+    width: 50%;
+    height: 40dvh;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.project-content {
+    padding: 20px;
+}
+
+.btn-donate {
+    background-color: #5e817b;
+    color: white;
+    padding: 10px 25px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.btn-donate:hover {
+    background-color: #4b6863;
+}

@@ -1,0 +1,23 @@
+{% extends "../base/base.html" %}
+
+{%load static%}
+{% block title %}
+<title>User Profile delete</title>
+{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{%static 'css/signup.css'%}">
+{% endblock %}
+
+{% block body %}
+<div class="container d-flex justify-content-center mt-5">
+    <div class="text-center">
+        
+<h2>Confirm Profile Deletion</h2>
+<p>Are you sure you want to delete your profile? This action cannot be undone.</p>
+  <a href="{% url 'profile_delete' %}" class="btn btn-danger">Confirm Delete</a>
+  <a href="{% url 'profile' %}" class="btn btn-secondary">Cancel</a>
+    </div>
+</div>
+    
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "../base/base.html" %}
+{% load static %}
+
+{% block title %}
+<title>Add Charity|request</title>
+{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/add_charity.css' %}">
+{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    
+    <h2 class="display-5 text-center mx-3 mb-5">Request to Add a Charity Organization</h2>
+<form method="post" enctype="multipart/form-data">
+
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Add Charity</button>
+    <a href="javascript:void(0);" onclick="history.back();" class="btn btn-secondary">Cancel</a>
+</form>
+
+</div>
+{% endblock %}
+

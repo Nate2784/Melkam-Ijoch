@@ -1,0 +1,37 @@
+{% extends "../base/base.html" %}
+{% load static %}
+
+{% block title %}
+<title>User Profile</title>
+{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/signup.css' %}">
+{% endblock %}
+
+{% block body %}
+<div class="container-fluid mt-5 w-50">
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="text-center">
+                <img src="{{ request.user.profile.avatar.url }}" class="img-thumbnail" alt="User avatar">
+                <h2 class="mt-4">User Name: {{ request.user.username }}</h2>
+            </div>
+        </div>
+        <div class="col-lg-8">
+            <h3 class="text-center display-4">Profile</h3>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><strong>First Name:</strong> {{ request.user.first_name }}</li>
+                <li class="list-group-item"><strong>Last Name:</strong> {{ request.user.last_name }}</li>
+                <li class="list-group-item"><strong>Email:</strong> {{ request.user.email }}</li>
+                <li class="list-group-item"><strong>Date Joined:</strong> {{ request.user.date_joined }}</li>
+            </ul>
+            <div class="text-center mt-3">
+                <a href="{% url 'add_charity' %}" class="btn btn-primary">Add Charity</a>
+                <a href="{% url 'add_project' %}" class="btn btn-success">Add Project</a>
+                <a href="{% url 'profile_update' %}" class="btn btn-primary">Update Profile</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

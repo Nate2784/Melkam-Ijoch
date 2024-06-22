@@ -1,0 +1,69 @@
+{% extends "../base/base.html" %}
+{% load static %}
+
+{% block title %}
+<title>New Charity Requests | Admin</title>
+{% endblock %}
+
+{% block styles %}
+{% endblock %}
+
+{% block body %}
+<div class="container-fluid p-5 mt-5">
+    <h2 class="display-4 text-center mx-3 mb-5">New Charity Requests</h2>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>#</th>
+                    <th>Username</th>
+                    <th>Org Name</th>
+                    <th>Image Link</th>
+                    <th>Description</th>
+                    <th>Website</th>
+                    <th>Location</th>
+                    <th>Year Established</th>
+                    <th>Documents</th>
+                    <th>Statement</th>
+                    <th>Status</th>
+                    <th>Action</th> <!-- New column for the action button -->
+                </tr>
+            </thead>
+            <tbody>
+                {% for charity in charities %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ charity.user_ID.username }}</td>
+                    <td>{{ charity.name }}</td>
+                    <td><a href="{{ charity.image.url }}" target="_blank" style="color: blue;">View Image</a></td>
+                    <td class="text-wrap">{{ charity.description }}</td>
+                    <td><a href="{{ charity.website }}" target="_blank" style="color: blue;">Visit Website</a></td>
+                    <td>{{ charity.location }}</td>
+                    <td>{{ charity.establishedYear }}</td>
+                    <td><a href="{{ charity.authorisedDocuments.url }}" target="_blank" style="color: blue;">View Document</a></td>
+                    <td class="text-wrap">{{ charity.statement }}</td>
+                    <td>
+                        {% if charity.status %}
+                            <span class="badge badge-success">Approved</span>
+                        {% else %}
+                            <span class="badge badge-warning">Pending</span>
+                        {% endif %}
+                    </td>
+                    <td class="d-flex ">
+                        {% if charity.status %}
+                        <a href="{% url 'remove_charity' charity.id %}" class="btn btn-danger btn-sm">Remove</a>    
+                        {% else %}
+                        <a href="{% url 'set_charity_status' charity.id %}" class="btn btn-success btn-sm">Approve</a>
+                        {% endif %}                    
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="12" class="text-center">No new charities found.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

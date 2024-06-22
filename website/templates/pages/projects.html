@@ -1,0 +1,55 @@
+{% extends "../base/base.html" %}
+{% load static %}
+
+{% block title %}
+<title>Projects</title>
+{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/projects.css' %}">
+{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    
+    <h3 class="display-5 mx-3 mb-5">Projects</h3>
+    <form method="get" action="{% url 'project-list' %}" class="mb-3">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search for projects by name or Organization." name="q" value="{{ request.GET.q }}">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="submit">Search</button>
+                <a href="{% url 'project-list' %}" class="btn btn-outline-danger">Cancel Search</a>
+            </div>
+        </div>
+    </form>
+    <hr>
+    
+    <section class="projects-section">
+        {% for project in projects %}
+        <article class="project-article">
+            <img src="{{ project.image.url }}" alt="{{ project.name }}" class="project-image">
+            <div class="project-content mt-3">
+                <h2><b>{{ project.name }}</b></h2>
+                <p class=" text-justify">{{ project.description }}</p>
+                <p class="charity-organization"><strong>Organized by</strong> {{ project.charity_ID.name }}</p>
+                {% if user.is_authenticated %}
+                    <a href="{% url 'make_donation' user.id project.id project.charity_ID.id %}" class="btn btn-donate">
+                        <i class="fa-regular fa-dollar"></i> Make Donation
+                    </a>
+                {% else %}
+                    <a href="{% url 'login' %}" class="btn btn-warning">
+                        <i class="fa-regular fa-sign-in"></i> Login to Make a Donation
+                    </a>
+                {% endif %}
+
+                
+            </div>
+        </article>
+        {% empty %}
+        <p class="text-center">No Projects found.</p>
+        {% endfor %}
+    </section>
+
+</div>
+
+{% endblock %}
