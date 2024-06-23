@@ -12,7 +12,7 @@
 {% block body %}
 <div class="container mt-5">
     
-    <h3 class="display-5 mx-3 mb-5">Projects</h3>
+    <h3 class="display-5 mx-3 mb-2">Projects</h3><hr>
     <form method="get" action="{% url 'project-list' %}" class="mb-3">
         <div class="input-group">
             <input type="text" class="form-control" placeholder="Search for projects by name or Organization." name="q" value="{{ request.GET.q }}">

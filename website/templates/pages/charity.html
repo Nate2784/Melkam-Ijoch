@@ -12,7 +12,7 @@
 {% block body %}
 <div class="container mt-5">
     
-    <h2 class="display-5 mx-3 mb-5">Charity Organizations</h2>
+    <h2 class="display-5 mx-3 mb-2">Charity Organizations</h2><hr>
     <form method="get" action="{% url 'charity' %}" class="mb-3">
         <div class="input-group">
             <input type="text" class="form-control" placeholder="Search for charities by charity name, cause or location" name="q" value="{{ request.GET.q }}">
