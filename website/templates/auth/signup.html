@@ -1,7 +1,6 @@
 {% extends "../base/base.html" %}
-
-
 {%load static%}
+
 {% block title %}
 <title>Signup</title>
 {% endblock %}
@@ -10,9 +9,7 @@
 <link rel="stylesheet" href="{%static 'css/signup.css'%}">
 {% endblock %}
 
-{% block body %}
-    
-
+{% block body %} 
 <div class="container mt-5">
     {% if form.errors %}
         <div class="alert alert-danger mt-3">
@@ -26,5 +23,4 @@
         <button type="submit" class="btn btn-primary">Sign Up</button>
     </form>
 </div>
-    
 {% endblock %}
